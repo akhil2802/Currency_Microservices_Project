@@ -1,0 +1,17 @@
+Currency Exchange Service:
+http://localhost:8000/currency-exchange/from/USD/to/INR
+
+Currency Conversion Service:
+http://localhost:8100/currency-conversion/from/USD/to/INR/quantity/10
+http://localhost:8100/currency-conversion-feign/from/USD/to/INR/quantity/10
+
+Eureka Server:
+http://localhost:8761
+
+API Gateway:
+CES: http://localhost:8765/currency-exchange/currency-exchange/from/USD/to/INR
+CCS: http://localhost:8765/currency-conversion/currency-conversion-feign/from/USD/to/INR/quantity/10
+
+Redefined Custom API Gateway Links:
+CES: http://localhost:8765/currency-exchange/from/USD/to/INR
+CCS: http://localhost:8765/currency-conversion-feign/from/USD/to/INR/quantity/10
