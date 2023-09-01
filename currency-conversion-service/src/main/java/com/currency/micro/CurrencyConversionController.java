@@ -1,11 +1,14 @@
 package com.currency.micro;
 
 import java.math.BigDecimal;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @RestController
 @RequiredArgsConstructor
@@ -35,11 +38,15 @@ public class CurrencyConversionController {
 	
 											//	Using Feign Client:
 	
+	private Logger logger = LoggerFactory.getLogger(CurrencyConversionController.class);
+	
 	private final CurrencyExchangeProxy proxy;
 	
 	@GetMapping("/currency-conversion-feign/from/{from}/to/{to}/quantity/{quantity}")
 	public CurrencyConversion calculateCurrencyConversionFeign(@PathVariable String from, @PathVariable String to,
 			@PathVariable BigDecimal quantity) {
+		
+		logger.info("retrieveConversionValue called with {} to {} for quantity {}", from, to, quantity);
 		
 		CurrencyConversion currencyConversion = proxy.retrieveExchangeValue(from, to);
 		
